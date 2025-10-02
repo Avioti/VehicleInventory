@@ -26,7 +26,7 @@ public class Main {
             System.out.println("2 - Search by make/model");
             System.out.println("3 - Search by price range");
             System.out.println("4 - Search by color");
-            System.out.println("Add a vehicle");
+            System.out.println("5 - Add a vehicle");
             System.out.println("6 - Quit");
 
             System.out.print("Enter your command: ");
@@ -49,7 +49,17 @@ public class Main {
                     float price = scanner.nextInt();
                     findVehiclesByPrice(vehicleinventory, price);
                 case 5:
-                    addAVehicle();
+                    System.out.print("What is the id? ");
+                    long vehicleId = scanner.nextInt();
+                    System.out.print("What is the Make/Model? ");
+                    String makeModel = scanner.next().trim();
+                    System.out.print("What is the color? ");
+                    String colors = scanner.next();
+                    System.out.print("How many miles? ");
+                    int odometerReading = Integer.parseInt(scanner.next());
+                    System.out.print("What is the price? ");
+                    float prices = scanner.nextInt();
+                    addAVehicle(vehicleId,makeModel,colors,odometerReading,prices);
                     break;
                 case 6:
                     return;
@@ -59,17 +69,19 @@ public class Main {
         }
     }
 
-    private static void findVehiclesByPrice(Vehicle[] inventory, float price) {
+    public static void findVehiclesByPrice(Vehicle[] inventory, float price) {
         for(Vehicle vehicle : inventory)
             if(vehicle.getPrice() == price)
                 System.out.println(vehicle);
     }
 
-    private static void addAVehicle(Vehicle[] slot, long vehicleId, String makeModel, String color, int odometerReading, float price) {
+    public static void addAVehicle(long vehicleId, String makeModel, String color, int odometerReading, float price) {
+        Vehicle newVehicle = new Vehicle(vehicleId, makeModel, color, odometerReading, price);
+        System.out.println("New vehicle added: " + newVehicle);
 
     }
 
-    private static void findVehicleColor(Vehicle[] inventory, String color) {
+    public static void findVehicleColor(Vehicle[] inventory, String color) {
         for(Vehicle vehicle : inventory)
             if(vehicle.getColor().equalsIgnoreCase(color))
                 System.out.println(vehicle);
