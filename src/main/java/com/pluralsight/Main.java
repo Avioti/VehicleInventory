@@ -43,6 +43,7 @@ public class Main {
                     String color = scanner.nextLine();
 
                     findVehicleColor(vehicleinventory, color);
+
                     break;
                 case 3:
                     System.out.print("What is the price? ");
@@ -53,10 +54,10 @@ public class Main {
                     long vehicleId = scanner.nextInt();
                     System.out.print("What is the Make/Model? ");
                     String makeModel = scanner.next().trim();
-                    System.out.print("What is the color? ");
+                    System.out.printf("What is the color? %n");
                     String colors = scanner.next();
                     System.out.print("How many miles? ");
-                    int odometerReading = Integer.parseInt(scanner.next());
+                    int odometerReading = scanner.nextInt();
                     System.out.print("What is the price? ");
                     float prices = scanner.nextInt();
                     addAVehicle(vehicleId,makeModel,colors,odometerReading,prices);
@@ -76,8 +77,8 @@ public class Main {
     }
 
     public static void addAVehicle(long vehicleId, String makeModel, String color, int odometerReading, float price) {
-        Vehicle newVehicle = new Vehicle(vehicleId, makeModel, color, odometerReading, price);
-        System.out.println("New vehicle added: " + newVehicle);
+       new Vehicle(vehicleId, makeModel, color, odometerReading, price);
+        System.out.println("New vehicle added: " + vehicleId + ", " + makeModel + ", " + color + ", " + odometerReading + ", " + price);
 
     }
 
